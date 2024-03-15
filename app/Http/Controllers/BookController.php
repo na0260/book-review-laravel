@@ -19,6 +19,7 @@ class BookController extends Controller
             fn($query, $title) => $query->title($title)
         );
         $books = match ($filter){
+            null=> $books->latest()->withReviewsCount()->withAvgRating(),
             'popular_last_month' => $books->popularLastMonth(),
             'popular_last_6months' => $books->popularLast6Month(),
             'top_rated_last_month' => $books->highestRatedLastMonth(),
@@ -48,9 +49,14 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view(
+            'books.show', [
+                'book' => $book->load([
+                'reviews'=> fn($query) => $query->latest()
+                ])
+            ]);
     }
 
     /**
