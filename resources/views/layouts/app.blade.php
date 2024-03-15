@@ -59,6 +59,9 @@
         .reset-link {
             @apply text-slate-500 underline;
         }
+        .rating-color{
+            @apply text-amber-500 font-black;
+        }
     </style>
     {{-- blade-formatter-enable --}}
 </head>
