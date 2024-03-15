@@ -10,7 +10,7 @@
         <a href="{{route('books.index')}}" class="btn h-10">Clear</a>
     </form>
 
-    <div class=".filter-container mb-4 flex">
+    <div class="filter-container mb-4 flex">
         @php
             $filters = [
                 '' => 'Latest',
@@ -44,7 +44,7 @@
                         </div>
                         <div>
                             <div class="book-rating">
-                                {{ number_format($book->review_avg_rating,1) }}
+                                {{ number_format($book->reviews_avg_rating,1) }}
                             </div>
                             <div class="book-review-count">
                                 out of {{$book->reviews_count}} {{Str::plural('review',$book->reviews_count)}}
